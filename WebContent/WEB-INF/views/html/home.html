@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet"  type="text/css" th:href="@{static/css/main.css}" />
+<title>Strongerweb</title>
+</head>
+<body>
+<h1>Welcome</h1>
+<h2>Let's get started.</h2>
+<form action="#" id="initial-data-form" th:action="@{/createprofile}" method="post">
+	<p><label>I weigh</label><input type="text" th:field="*{human.weightInPounds}" name="weightInPounds" /> pounds<br /></p>
+	<p>I am a <label for="male">Man</label><input th:field="*{human.sex}" type="radio" th:value="${T(strongerweb.dao.Human.Sex).MALE}" name="sex" id="male" checked="checked" />
+	<label for="woman">Woman</label><input th:field="*{human.sex}" type="radio" name="sex" th:value="${T(strongerweb.dao.Human.Sex).FEMALE}" id="female" /></p>
+	<p><button type="submit">Submit</button></p>
+</form>
+<br /><br />
+<p><a href="newuser">Create account</a></p>
+<br />
+<h3>Current users:</h3>
+<th:block th:each="row : ${userAccounts}">
+<span th:text="${row.username}"></span><br />
+
+</th:block>
+
+</body>
+</html>
