@@ -1,4 +1,4 @@
-package strongerweb.service;
+package strongerweb.test.service;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,9 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import strongerweb.dao.Human;
 import strongerweb.dao.Human.Sex;
-import strongerweb.dao.HumanAbilities.typicalMaxAsPercentBodyweight;
 import strongerweb.dao.HumanAbilities;
-import strongerweb.dao.UserAccountDao;
+import strongerweb.service.InitialSetupService;
 
 @ActiveProfiles("dev")
 @ContextConfiguration(locations = {	"classpath:strongerweb/xmlconfig/dao-context.xml",
@@ -69,11 +68,30 @@ public class InitialSetupServiceTest {
 	
 	@Test
 	public void testFemaleNoEntry() {
-		
+		human.setSex(Sex.FEMALE);
+		//maybe implement validators on human class
 	}
 	
 	@Test
-	public void testFemaleZeroEntry() {
-		
+	public void testFemaleZeroEntryNoAbilities() {
+		human.setSex(Sex.FEMALE);
+		human.setWeightInPounds(0);
+		HumanAbilities humanAbilities = initialSetupService.calculateHumanAbilities(human);
+		assertTrue("Exercises are set",humanAbilities.getMaxHighBarbellBackSquat() > 0
+				&& humanAbilities.getMaxBarbellPendlayRow() > 0
+				&& humanAbilities.getMaxBarbellOverheadPress() > 0
+				&& humanAbilities.getMaxBarbellFrontSquat() > 0
+				&& humanAbilities.getMaxLowBarbellBackSquat() > 0
+				&& humanAbilities.getMaxMachineCurl() > 0
+				&& humanAbilities.getMaxSmithMachineCalfRaise() > 0
+				&& humanAbilities.getMaxRomanianDeadlift() > 0);
 	}
+	
+	@Test
+	public void testFemaleSomeWeightEntered() {
+		human.setSex(Sex.FEMALE);
+		human.setWeightInPounds(130);
+		initialSetupService.calculateHumanAbilities(human);
+		assertTrue("Weight over 0 pounds is unchanged", human.getWeightInPounds() == 130);	
+	}	
 }
