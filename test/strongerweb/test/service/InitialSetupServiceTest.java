@@ -44,10 +44,16 @@ public class InitialSetupServiceTest {
 	}
 	
 	@Test
+	public void testInvalidWeightEntry() {
+		
+		//maybe implement validators on human class
+	}
+	
+	@Test
 	public void testMaleZeroEntryNoAbilities() {
 		human.setSex(Sex.MALE);
 		human.setWeightInPounds(0);
-		HumanAbilities humanAbilities = initialSetupService.calculateHumanAbilities(human);
+		HumanAbilities humanAbilities = initialSetupService.guessAllHumanAbilities(human);
 		assertTrue("Exercises are set",humanAbilities.getMaxHighBarbellBackSquat() > 0
 				&& humanAbilities.getMaxBarbellPendlayRow() > 0
 				&& humanAbilities.getMaxBarbellOverheadPress() > 0
@@ -62,7 +68,7 @@ public class InitialSetupServiceTest {
 	public void testMaleSomeWeightEntered() {
 		human.setSex(Sex.MALE);
 		human.setWeightInPounds(130);
-		initialSetupService.calculateHumanAbilities(human);
+		initialSetupService.guessAllHumanAbilities(human);
 		assertTrue("Weight over 0 pounds is unchanged", human.getWeightInPounds() == 130);	
 	}
 	
@@ -76,7 +82,7 @@ public class InitialSetupServiceTest {
 	public void testFemaleZeroEntryNoAbilities() {
 		human.setSex(Sex.FEMALE);
 		human.setWeightInPounds(0);
-		HumanAbilities humanAbilities = initialSetupService.calculateHumanAbilities(human);
+		HumanAbilities humanAbilities = initialSetupService.guessAllHumanAbilities(human);
 		assertTrue("Exercises are set",humanAbilities.getMaxHighBarbellBackSquat() > 0
 				&& humanAbilities.getMaxBarbellPendlayRow() > 0
 				&& humanAbilities.getMaxBarbellOverheadPress() > 0
@@ -91,7 +97,7 @@ public class InitialSetupServiceTest {
 	public void testFemaleSomeWeightEntered() {
 		human.setSex(Sex.FEMALE);
 		human.setWeightInPounds(130);
-		initialSetupService.calculateHumanAbilities(human);
+		initialSetupService.guessAllHumanAbilities(human);
 		assertTrue("Weight over 0 pounds is unchanged", human.getWeightInPounds() == 130);	
 	}	
 }

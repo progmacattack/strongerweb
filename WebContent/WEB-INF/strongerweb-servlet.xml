@@ -32,4 +32,15 @@
 	</bean>
 
 	<mvc:resources location="/resources/" mapping="/static/**"></mvc:resources>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basename" value="strongerweb.messages.messages"></property>
+	</bean>
+	
+	<bean name="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+	    <property name="validationMessageSource">
+	        <ref bean="messageSource" />
+	    </property>
+	</bean>
 </beans>

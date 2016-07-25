@@ -1,5 +1,7 @@
 package strongerweb.dao;
 
+import org.jboss.logging.Logger;
+
 import strongerweb.utilities.Convert.Weight;
 
 /**
@@ -10,8 +12,12 @@ import strongerweb.utilities.Convert.Weight;
  */
 
 public class Human {
-	public int weightInPounds = 0;
+	Logger logger = Logger.getLogger(this.getClass());
+
+	private int weightInPounds = 0;
+
 	Sex sex;
+	
 	HumanAbilities humanAbilities;
 	AverageHumanWeight averageHumanWeight;
 	
@@ -56,15 +62,13 @@ public class Human {
 		return weightInPounds;
 	}
 	
-	
 	/**
-	 * @param weightInPounds int of the human's bodyweight in pounds
+	 * @param weightInPounds int of the human's weight in pounds
 	 */
 	public void setWeightInPounds(int weightInPounds) {
 		this.weightInPounds = weightInPounds;
 	}
-	
-	
+
 	/**
 	 * @return Sex enum describing the biological sex of the human
 	 */

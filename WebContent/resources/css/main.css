@@ -21,6 +21,11 @@ h2 {
 	font-weight:normal;
 }
 
+.error-message {
+	color: red;
+	font-size: small;
+}
+
 input[type=text] {
 	display:inline-block;
 	margin-left: 3px;
