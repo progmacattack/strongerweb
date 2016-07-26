@@ -40,7 +40,6 @@ public class InitialSetupServiceTest {
 	@Test
 	public void testMaleNoEntry() {
 		human.setSex(Sex.MALE);
-		//maybe implement validators on human class
 	}
 	
 	@Test

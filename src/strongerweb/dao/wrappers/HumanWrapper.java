@@ -1,10 +1,7 @@
 package strongerweb.dao.wrappers;
 
-import org.jboss.logging.Logger;
-
+import strongerweb.constraints.AValidSex;
 import strongerweb.constraints.AValidWeight;
-import strongerweb.dao.Human;
-import strongerweb.dao.Human.Sex;
 
 
 /**
@@ -14,6 +11,7 @@ import strongerweb.dao.Human.Sex;
 public class HumanWrapper {
 	@AValidWeight
 	public String weight;
+	@AValidSex
 	public String sex;
 	public String getWeight() {
 		return weight;

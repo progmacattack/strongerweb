@@ -20,6 +20,7 @@
 				type="radio" value="male" name="male" />
 				<label for="woman">Woman</label><input
 				th:field="*{humanWrapper.sex}" type="radio" value="female" name="female" />
+				<span th:each="err : ${#fields.errors('humanWrapper.sex')}" th:utext="'<br />' + ${err}" th:class="error-message"></span>
 		</p>
 		<p>
 			<button type="submit">Submit</button>

@@ -20,12 +20,12 @@ public class InitialSetupController {
 	@RequestMapping(value="/createprofile", method=RequestMethod.POST)
 	public String createProfile(Model model, @Valid HumanWrapper humanWrapper, BindingResult result) {
 		InitialSetupService iss = new InitialSetupService();
-		Human human = iss.setupHuman(humanWrapper);
-		logger.info("Setup human as follows: " + human);
 		
 		if (result.hasErrors()) {
 			return "home";
 		} else {
+			Human human = iss.setupHuman(humanWrapper);
+			logger.info("Setup human as follows: " + human + " in " + this.getClass());
 			return "initialprofile";
 		}
 	}
