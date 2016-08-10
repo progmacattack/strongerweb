@@ -6,8 +6,11 @@
 <title>Strongerweb - Initial Profile</title>
 </head>
 <body>
-<h1>Start with this.</h1>
-<h2>(Know better? You can edit this)</h2>
-
+<h1>Here's a start.</h1>
+<h2>If you know better, adjust!</h2>
+<div class="slider" th:object="${humanAbilities}">
+	<label for="highBarbellBackSquatSlider">Back Squat</label>
+	<input type="range" th:min="*{maxHighBarbellBackSquat / 2}" th:max="*{maxHighBarbellBackSquat * 2}" th:value="*{maxHighBarbellBackSquat}" />
+</div>
 </body>
 </html>

@@ -27,13 +27,13 @@ public class UserAccountController {
 	
 	@RequestMapping("/newuser")
 	public String newUser(Model model) {
-		return "newUser";
+		return "newuser";
 	}
 	
 	@RequestMapping("/docreate")
 	public String doCreate(Model model, @Valid UserAccount userAccount, BindingResult result) {
 		if (result.hasErrors()) {
-			return "newUser";
+			return "newuser";
 		}
 		userAccountService.create(userAccount);
 		return "newusercreated";

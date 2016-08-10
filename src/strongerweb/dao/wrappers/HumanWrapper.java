@@ -5,7 +5,7 @@ import strongerweb.constraints.AValidWeight;
 
 
 /**
- * @author Adam
+ * @author Adam Sickmiller
  * A wrapper class to accept input from the web and then when it is clean create an object
  */
 public class HumanWrapper {
